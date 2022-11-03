@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <graphics.h>
+#include<dos.h>
+int main()
+{
+    int gd = DETECT, gm, i;
+    initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+
+    // MOVING CAR
+    for (i = 0; i <= 639; i++)
+    {
+	// CAR BODY
+	line(50 + i, 300, 70 + i, 300);
+	arc(85 + i, 300, 0, 180, 15);
+	line(100 + i, 300, 140 + i, 300);
+	arc(155 + i, 300, 0, 180, 15);
+	line(170 + i, 300, 190 + i, 300);
+	line(190 + i, 300, 190 + i, 280);
+	line(160 + i, 250, 80 + i, 250);
+	line(160 + i, 250, 190 + i, 280);
+	line(50 + i, 280, 50 + i, 300);
+	line(50 + i, 280, 80 + i, 250);
+	// CAR WINDOW
+	line(126 + i, 260, 126 + i, 280);
+	line(126 + i, 260, 155 + i, 260);
+	line(126 + i, 280, 175 + i, 280);
+	line(175 + i, 280, 155 + i, 260);
+	line(115 + i, 260, 115 + i, 280);
+	line(115 + i, 260, 85 + i, 260);
+	line(115 + i, 280, 65 + i, 280);
+	line(65 + i, 280, 85 + i, 260);
+
+	// WHEEL,S
+	circle(85 + i, 300, 10);
+	circle(155 + i, 300, 10);
+
+	// MAN
+	circle(140 + i, 272, 4);
+	line(145 + i, 275, 150 + i, 280);
+	line(137 + i, 274, 131 + i, 280);
+
+	// COLOR
+	setfillstyle(1, RED);
+	floodfill(55 + i, 280, WHITE);
+	delay(10);
+        cleardevice();
+        // ROAD
+        line(0, 312, 639, 312);
+    }
+   return 0;
+}

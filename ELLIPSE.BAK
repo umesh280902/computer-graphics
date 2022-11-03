@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<stdlib.h>
+#define max 24000
+int stack[max];
+int top=-1;
+void push(int x)
+{
+top=top+1;
+stack[top]=x;
+}
+int pop()
+{ int value;
+value=stack[top];
+top=top-1;
+return value;
+}
+void flood(int ax,int by,int newcolour,int oldcolour)
+{
+    int y,x;
+    push(ax);
+      push(by);
+      while(top!=-1)
+{  y=pop();
+x=pop();
+  if(getpixel(x,y)==oldcolour)
+    {
+	putpixel(x,y,newcolour);
+	}
+	if((getpixel(x+1,y)!=newcolour)&&(getpixel(x+1,y)==oldcolour))
+	{push(x+1);
+	push(y);}
+	if((getpixel(x-1,y)!=newcolour)&&(getpixel(x-1,y)==oldcolour))
+       {	push(x-1);
+	push(y);}
+	if((getpixel(x,y+1)!=newcolour)&&(getpixel(x,y+1)==oldcolour))
+	{push(x);
+	push(y+1);
+	}
+	if((getpixel(x,y-1)!=newcolour)&&(getpixel(x,y-1)==oldcolour))
+	{
+	push(x);
+	push(y-1);
+    }
+}
+}
+int main(){
+int gd=DETECT,gm;
+initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
+ellipse(150,200,0,360,25,50);
+ellipse(145,250,280,0,8,40);
+ellipse(145,330,90,160,8,40);
+delay(1000);
+ellipse(300,200,0,360,25,50);
+ellipse(295,250,280,0,8,40);
+ellipse(295,330,90,160,8,40);
+delay(1000);
+ellipse(450,200,0,360,25,50);
+ellipse(445,250,280,0,8,40);
+ellipse(445,330,90,160,8,40);
+delay(3000);
+flood(150,200,4,0);
+delay(2000);
+flood(300,200,2,0);
+delay(2000);
+flood(450,200,1,0);
+getch();
+closegraph();
+return 0;
+}
+

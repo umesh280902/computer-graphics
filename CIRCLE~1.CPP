@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<conio.h>
+#include<dos.h>
+int main()
+{
+	int gd=DETECT,gm;
+	initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
+	setcolor(YELLOW);
+	setfillstyle(SOLID_FILL,YELLOW);
+	circle(320,240,100);
+	delay(1000);
+	floodfill(322,242,YELLOW);
+	setcolor(BLUE);
+	setfillstyle(SOLID_FILL,BLUE);
+	circle(320,240,80);
+	delay(1000);
+	floodfill(322,242,BLUE);
+	setcolor(GREEN);
+	setfillstyle(SOLID_FILL,GREEN);
+	circle(320,240,60);
+	delay(1000);
+	floodfill(322,242,GREEN);
+	
+	getch();
+	closegraph();
+	return 0;
+}

@@ -1,0 +1,64 @@
+// C++ program implementing flying fish using graphics.h
+#include <conio.h>
+#include <dos.h>
+#include <graphics.h>
+#include <stdio.h>
+//#include <iostream.h>
+// Wings
+void finDown(int i)
+{
+ line(130 + i, 180, 150 + i, 130);
+ line(170 + i, 180, 150 + i, 130);
+ 
+ line(130 + i, 220, 150 + i, 270);
+ line(170 + i, 220, 150 + i, 270); 
+}
+void finUp(int i)
+{
+ line(130 + i, 180, 150 + i, 150);
+ line(170 + i, 180, 150 + i, 150);
+ 
+ line(130 + i, 220, 150 + i, 250);
+ line(170 + i, 220, 150 + i, 250); 
+}
+// Driver code
+int main(void)
+{
+int gd = DETECT, gm;
+ int i = 0;
+// Path of the BGI folder
+initgraph(&gd, &gm, "\\BGI");
+//clrscr();
+for (i = 0; i < 400; i++) { 
+// Body
+//setcolor(BLUE);
+ellipse(150+i,200,0,360,60,20);
+ 
+ // Tail
+ line(95+i,210,50+i,230);
+ line(95+i,190,50+i,170);
+ line(50+i,230,50+i,170);
+ 
+ // eyes
+ //setfillstyle(WHITE);
+ circle(185+i,193,3);
+ circle(185+i,207,3);
+ 
+// Move fins
+if (i % 10 < 5)
+finUp(i);
+else
+finDown(i);
+ 
+ 
+// Stop the screen for 10 secs
+delay(100);
+ //getch();
+// Clear the screen
+cleardevice();
+}
+getch();
+// Close the graph
+closegraph();
+}
+//done dun a done
